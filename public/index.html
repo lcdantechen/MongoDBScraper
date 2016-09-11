@@ -3,28 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <style>
     .scrapeImage {
-      max-width:50%;
+      max-width:70%;
+      padding-bottom: 30px;
+    }
+    .paintTitle {
+      color:#AA3939;
+      font-size:1.5em;
+    }
+
+    #savenote {
+      margin-bottom: 30px;
+      float:left;
+    }
+    
+    #deletnote {
+      margin-bottom: 30px;
+      float:right;
     }
     body{
       /*background-color: #DECADE*/
       background-color: #F2F6D0
     }
-    #wrapper{
+   /* #wrapper{
       width:960px;
       margin: 0 auto;
       padding-top: 5%;
-    }
+    }*/
     #articles{
-      width:60%;
+      /*width:60%;*/
       height:700px;
       display:inline-block;
       overflow: auto;
     }
     #notes{
-      width:30%;
-      float:right;
+      /*width:30%;*/
+      /*float:right;*/
     }
     textarea, input{
       display:block;
@@ -42,13 +58,40 @@
   </style>
 </head>
 <body>
-  <div id="wrapper">
-    <h1>Note Scraper</h1>
-    <h2><i>If you can do this...the homework should be no problem.</i></h2>
+  <div class="container text-center">
+  <h1>Illustration & Digital Painting Gallery</h1>
+    <h2><i>Leave your thoughts and comments!</i></h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <h4>What do you this about this work?</h4>
+      <div id="notes"></div>
+      <form>
+        <div class="form-group">
+          
+          <input type="text" class="form-control" id="titleinput" name="title" placeholder="Subject">
+        </div>
+        <div class="form-group">
+          
+          <textarea class="form-control" rows="5" id="bodyinput" name="body" placeholder="Comment">
+          </textarea>
+        </div>
+        <!-- <button class="btn btn-success" id="savenote">Save Your Note</button> -->
+      </form>
+    </div>
+    <div class="col-sm-7">
+      <div id="articles"></div>
+    </div>
+
+  </div>
+</div>
+  <!-- <div id="wrapper">
+    <h1>Illustration & Digital Painting Gallery</h1>
+    <h2><i>Leave your thoughts and comments!</i></h2>
     <div id="articles"></div>
     <div id="notes"></div>
-  </div>
+  </div> -->
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

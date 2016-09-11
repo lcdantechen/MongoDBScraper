@@ -162,6 +162,32 @@ app.post('/articles/:id', function(req, res){
 	});
 });
 
+//delete post
+
+app.delete('/articles/:id', function(req, res){
+
+		
+			Article.findOneAndUpdate({'_id': req.params.id}, {'note':doc._id})
+			// execute the above query
+			.exec(function(err, doc){
+				// log any errors
+				if (err){
+					console.log(err);
+				} else {
+					doc.remove(function(err) {
+                    if (err) {
+                        res.statusCode = 403;
+                        res.send(err);
+                    } else {
+                        res.send({});
+                    }
+
+				 })
+				}
+			});
+		
+	
+});
 
 
 
