@@ -23,7 +23,8 @@ app.use(express.static('public'));
 
 
 // Database configuration with mongoose
-mongoose.connect('mongodb://localhost/mongoscraper');
+/*mongoose.connect('mongodb://localhost/mongoscraper');*/
+mongoose.connect('mongodb://heroku_m2v8652h:nclik54mn18gcp1gmmcq19mcnd@ds019976.mlab.com:19976/heroku_m2v8652h');
 var db = mongoose.connection;
 
 // show any mongoose errors
