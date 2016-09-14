@@ -98,7 +98,7 @@ $(document).on('click', '#deletnote', function(){
     // with that done
     .done(function( data ) {
       // log the response
-      console.log(data);
+      console.log('deletd', data);
       // empty the notes section
       $('#notes').empty();
     });

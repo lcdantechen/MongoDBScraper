@@ -146,7 +146,7 @@ app.post('/articles/:id', function(req, res){
 		// otherwise
 		else {
 			// using the Article id passed in the id parameter of our url, 
-			// prepare a query that finds the matching Article in our db
+			// prepar e a query that finds the matching Article in our db
 			// and update it to make it's lone note the one we just saved
 			Article.findOneAndUpdate({'_id': req.params.id}, {'note':doc._id})
 			// execute the above query
@@ -167,28 +167,32 @@ app.post('/articles/:id', function(req, res){
 
 app.delete('/articles/:id', function(req, res){
 
-		
-			Article.findOneAndUpdate({'_id': req.params.id}, {'note':doc._id})
+			console.log('in delete');
+			Article.findById(req.params.id)
 			// execute the above query
-			.exec(function(err, doc){
+			.exec(function(err, article){
+				console.log('err', err);
+				console.log('article', article);
 				// log any errors
 				if (err){
 					console.log(err);
 				} else {
-					doc.remove(function(err) {
-                    if (err) {
-                        res.statusCode = 403;
-                        res.send(err);
-                    } else {
-                        res.send({});
-                    }
-
-				 })
-				}
+					console.log(article);
+					var noteId = article.note;
+					//article.note = null;
+					article.save(function(err) {
+						console.log('err', err);
+						Note.remove({_id: noteId}).exec(function(err) {
+							console.log('err');
+							res.send();
+						})
+					});					
+				 }
+				})
 			});
 		
 	
-});
+
 
 
 
@@ -196,6 +200,6 @@ app.delete('/articles/:id', function(req, res){
 
 
 // listen on port 3000
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log('App running on port 3000!');
 });
